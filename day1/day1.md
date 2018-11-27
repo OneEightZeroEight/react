@@ -27,19 +27,24 @@ render渲染
 
 >注意：模板里面仅且只能有一个节点，一个父节点，不能有多个兄弟节点
 
+这是我们react的起手动作
 ```js
 ReactDOM.render(
     <div>hello world</div>,
     document.querySelector("#demo")
 )
 ```
+这是我们react的起手动作
+```js
+new Vue({})
+```
 
 # React vs Vue
 
-|React|Vue|
-|-|-|
-|代码较多20000行|vue10000行|
-|较复杂|精简|
+|React|Vue|jQuery|
+|-|-|-|
+|代码较多20000行|vue10000行||
+|较复杂|精简||
 |`{}`|`{{}}`|
 ||指令 |
 
@@ -48,6 +53,8 @@ ReactDOM.render(
 ## 模板语法
 
 > JSX = JS + HTML
+
+JSX是react特有的语法
 
 在JS里面放入了HTML结构，这种就是react用到的jsx语法
 
@@ -148,7 +155,7 @@ fontSize这种要驼峰写法
 
 ## 渲染html结构
 
-代替`v-html`尽量少用,放置xs攻击
+代替`v-html`尽量少用,放置xss攻击
 
 ```html
 <!-- data -->
@@ -193,7 +200,25 @@ let methods = {
 </div>
 ```
 
+## this的指向
+
+`onClick={this.test}`这里是不能用加括号的这种方式来传参`onClick={this.test(params)}`
+
+并且这样写之后`this.test`里面的this会是`undefined`
+
+在react，函数带参数是要配合`bind`方法，通过`bind`获取`this`和参数
+```html
+<button @click="test()">ok</button>
+<button onClick={this.test}>ok</button>
+<!-- 参数 -->
+<button onClick={this.test.bind(this,参数)}>ok</button>
+```
+
 # 组件
+
+分治，方便管理，减少耦合
+
+复用，提高效率，性能
 
 组件的本质其实是函数,**最简单的组件**可以使用函数来定义,组件首字母必须是大写
 ```js
@@ -208,7 +233,7 @@ ReactDOM.render(
     document.querySelector("#demo")
 )
 ```
-以ES6d定义类的方式去生命组件是最常用的，也是我建议用的方法
+以ES6定义类的方式去生命组件是最常用的，也是我建议用的方法
 ```js
 class Xheader extends React.Component {
     constructor(props){
@@ -227,6 +252,10 @@ ReactDOM.render(
 )
 ```
 # props
+
+props是继承父一辈的东西
+
+父子组件通信的话，首选`props`，父子，不推荐用在隔代遗传（父传孙子）
 
 如果需要让同一个组件呈现不同的状态，可以考虑用props来解决，父组件往子组件的属性值上面定义一个值，然后该子组件就可以接受该值呈现对应的状态
 
@@ -249,8 +278,13 @@ ReactDOM.render(
     document.querySelector("#demo")
 )
 ```
+`ReactDOM.render`这个老爸，把`微信`和`支付宝`分别传给两个不同的儿子`<Xheader>`,这两个儿子通过自身的`props`来吸收，然后转化自己的属性值显示
 
 # state
+
+state是自己努力得来的
+
+state在程序里面一般是通过`ajax`来向后端要的，或者自己写死的
 
 state是组件自己独有的数据，它不受外界影响，它的数据一般来说是自己提供，并且自己触发更改
 
@@ -259,6 +293,8 @@ state是组件自己独有的数据，它不受外界影响，它的数据一般
 vue MVVM  数据变视图变，视图变数据变
 
 react SV (state,view) 状态变视图变，但是视图变状态不变
+
+一般来说，我们说的数据驱动，大部分是指（vue的data）或者（react的state），但是它只是数据的代言人，它不能代表全部，真正的数据指的是类组件里面，所有的`props,state和函数`等
 ```js
 class Xheader extends React.Component {
     constructor(props){
@@ -281,7 +317,7 @@ ReactDOM.render(
 ```
 
 
-# setState
+# setState或者setProps
 
 react的语法是`{}`，单向数据绑定
 
