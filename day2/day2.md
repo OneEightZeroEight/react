@@ -71,6 +71,7 @@ shouldComponentUpdate(){
 ```
 `componentWillUpdate` 相当于vue中的`beforeUpdate`
 `componentDidUpdate` 相当于vue中的`updated`
+
 `componentWillUnmount` 相当于vue中的`destoryed`销毁了
 以下两个可以触发销毁阶段
 ```js
@@ -102,3 +103,20 @@ $.ajax().done((data)=>{
     // componentDidMount
 })
 ```
+
+# 表单
+
+v-model仅且只能用在`select,textarea和input`获取用户输入的内容
+
+表单，其实用户提交数据给逻辑层（JS），逻辑层有一个数据存储的地方（model）层
+
+react用户想把视图（用户看到页面的内容view）上的数据带回到数据层（model），只能通过监听事件来实现
+
+vue想把视图数据带回数据层`v-model`和`v-on/@xxx`
+
+如果vue没有`v-model`它其实跟react是一样的，单向数据绑定和双向数据绑定的区别，vue有`v-model`，而react没有，要实现`v-model`只能通过事件配合`setState`来实现
+
+
+> v-model (vue) = onchange + setState (react)
+
+# 
