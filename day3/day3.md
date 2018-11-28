@@ -20,6 +20,18 @@ webpack 多变少（一个）多进少出
 
 gulp 多变多 多进多出
 
+webpack它默认只能处理JS类型文件，它不自带处理其他非JS文件的功能
+如果你想webpack处理非JS类型文件，必须安装其他第三方插件来实现，webpack里面这种插件称之为`loaders`(加载器)
+
+> loader = 处理各种非JS类型文件
+
+gulp要拓展功能需要装第三方插件
+```
+gulp-sass
+gulp-minify
+gulp-concat
+```
+
 ## 安装
 
 
@@ -36,6 +48,7 @@ npm install gulp    //本地
 
 
 npm install webpack -g
+npm install webpack-cli -g
 npm install webpack
 ```
 
@@ -94,3 +107,42 @@ $("body").html("helloworld");
 webpack
 ```
 `require.js`模块化，分开模块管理项目，并且能重复使用模块
+
+> webpack = gulp + requirejs
+
+既做打包合并也做模块化，相对于`gulp`，它就是更偏重于模块化
+
+`vue-cli`基于`webpack`,它就的模块化就是基于webpack的
+
+
+# 要实现vue的组件
+
+因为`.vue`组件是非JS类型文件，我们需要安装`vue-loader`来处理
+```bash
+npm install vue-loader
+npm install sass-loader
+npm install html-loader
+npm install css-loader
+npm install json-loader
+```
+
+# 配置loader
+
+安装完对应的loader之后，还需要在`webpack.config.js`文件里面进行配置
+
+这些loader都是帮你处理不同类型的文件(非JS类型文件)，`test`是正则，匹配文件名字，`use`是加上你对应`loader`的名字
+
+```js
+module: {
+    rules: [{
+        test: /\.vue$/,
+        use: 'vue-loader'
+    }, {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+    }, {
+        test: /\.png|jpg|jpeg$/,
+        use: ['url-loader']
+    }]
+},
+```
