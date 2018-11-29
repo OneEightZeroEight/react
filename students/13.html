@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>Xhead</title>
+	<style>
+		.navs{
+			width : 100px;
+			height : 60px;
+			font-size : 30px;
+		}
+		.active{
+			color : red;
+		}
+		.Nav{
+			display : flex;
+			//justify-content : space-between;
+		}
+	</style>
+</head>
+<body>
+
+	<script src="react-master/js/react.js"></script>
+    <script src="react-master/js/react-dom.js"></script>
+    <script src="react-master/js/babel.js"></script>
+    <script src='./homeList.jsx' type="text/babel"></script>
+	<div class="demo"></div>
+	<script type="text/babel">
+		class Xhead extends React.Component {
+			constructor(props){
+				super(props)
+				this.props = props
+				this.state = {
+					nav : [{name:'奔驰',path:'/'},{name:'宝马',path:'/'},{name:'奥迪',path:'/'}],
+					active : 0
+				}
+			}
+			changeActive(idx,e){
+				console.log(idx)
+				this.setState({
+					active : idx
+				})
+			}
+			render(){
+				return (
+					<div className='Nav'>
+					{
+						(()=>{
+							return this.state.nav.map((item,idx)=>{
+								return <div className={this.state.active===idx?'navs active':'navs'} onClick={this.changeActive.bind(this,idx)} key={idx}>{item.name}</div>
+							})													
+						})()
+					}	
+					</div>
+				)
+			}
+
+		}
+		ReactDOM.render(
+			<div>
+				<Xhead/>
+				<XhomeList/>
+			</div>
+			,
+			document.querySelector('.demo')
+		)
+	</script>
+</body>
+</html>

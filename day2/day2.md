@@ -119,4 +119,16 @@ vue想把视图数据带回数据层`v-model`和`v-on/@xxx`
 
 > v-model (vue) = onchange + setState (react)
 
-# 
+# 面试题
+
+- React有哪些生命周期
+
+- 和vue生命周期的区别 (vue是有编译前和后，但是react，它从挂载前和后开始的，但也有vue没有的生命周期`componentWillReceivePorps`和`shouldComponentUpdate`)
+
+- react怎么实现表表单功能
+
+> v-model (vue) = onchange + setState (react)
+
+- 什么是虚拟DOM，好处是什么（性能，优化）操作虚拟DOM是高效，但是操作真实DOM节点比较高昂
+
+

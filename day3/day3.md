@@ -32,6 +32,8 @@ gulp-minify
 gulp-concat
 ```
 
+开发是在`entry`里面,发布是在`output`文件夹
+
 ## 安装
 
 
@@ -146,3 +148,14 @@ module: {
     }]
 },
 ```
+
+
+# 面试题
+
+- webpack和gulp的区别
+
+- webpack的四大概念入口(entry)输出(output)loader插件(plugins)
+
+- webpack如何实现模块化的
+
+- webpack的打包后执行代码的原理`eval("console.log(1)")`
