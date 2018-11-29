@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 class Wpannel extends React.Component {
 	constructor(props) {
 		super(props);
@@ -47,9 +48,9 @@ class Wpannel extends React.Component {
 												</div>
 											</div> */}
 												<header className="weibo-top m-box">
-													<div className="m-avatar-box m-box-center"><a href="/profile/2370784220" className="m-img-box">
+													<div className="m-avatar-box m-box-center"><Link to="/detail/" className="m-img-box">
 														<img src={item.mblog.user.avatar_hd} alt="avatar" />
-													</a></div>
+													</Link></div>
 													<div className="m-box-dir m-box-col m-box-center">
 														<div className="m-text-box"><a href="/profile/2370784220" className="">
 															<h3 className="m-text-cut">{

@@ -2,15 +2,17 @@ import React from "react";
 class Wheader extends React.Component {
 	constructor(props) {
 		super(props)
+		this.props = props;
+		console.log(props);
 		this.state = {
 			nav: 0,
 			navs: [{
 				title: "热门",
-				href: "",
+				href: "/home/hot/",
 				channel: ""
 			}, {
 				title: "新鲜事",
-				href: "",
+				href: "/home/fresh/",
 				channel: ""
 			}, {
 				title: "搞笑",
@@ -60,6 +62,7 @@ class Wheader extends React.Component {
 		this.setState({
 			nav: index
 		})
+		this.props.history.push(this.state.navs[index].href)
 	}
 
 	render() {
