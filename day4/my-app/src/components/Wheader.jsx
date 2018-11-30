@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from 'react-redux';
 class Wheader extends React.Component {
 	constructor(props) {
 		super(props)
@@ -104,7 +105,9 @@ class Wheader extends React.Component {
 								</div>
 							</div>
 						</div>
-						<div className="nav-plus m-box-center m-box-center-a"><i className="m-font m-font-arrow-down"></i></div>
+						<div onClick={
+							this.props.toggleNav.bind(this)
+						} className="nav-plus m-box-center m-box-center-a"><i className="m-font m-font-arrow-down"></i></div>
 					</div>
 				</div>
 			</div>
@@ -112,4 +115,18 @@ class Wheader extends React.Component {
 	}
 }
 
-export default Wheader;
+export default connect((state)=>{
+	// 获取state
+	return state
+},(dispatch)=>{
+	// 触发action
+	return {
+		toggleNav(){
+			console.log(this)
+			dispatch({
+				type:"toggleNav",
+				isShowNav:!this.props.isShowNav
+			})
+		}
+	}
+})(Wheader);

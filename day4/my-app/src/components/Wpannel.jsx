@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 class Wpannel extends React.Component {
 	constructor(props) {
 		super(props);
@@ -76,9 +77,16 @@ class Wpannel extends React.Component {
 														<div>
 															<div className="weibo-media-wraps weibo-media f-media media-b">
 																<ul className="m-auto-list">
-																	<li className="m-auto-box2">
-																		<div className="m-img-box m-imghold-4-3">
-																			<img src="https://wx2.sinaimg.cn/orj360/a121e3fbgy1fs632af3z8j20fk0fk3ze.jpg"
+																	<li onClick={
+																		this.props.toggleGallery.bind(this, item.mblog.user.avatar_hd)
+																	} className="m-auto-box2">
+																		<div className="m-img-box m-imghold-4-3" style={{
+																			height:"100px"
+																		}}>
+																			<img style={{
+																				width: "92.31px",
+																				height: "92.31px"
+																			}} src="https://wx2.sinaimg.cn/orj360/a121e3fbgy1fs632af3z8j20fk0fk3ze.jpg"
 																				className="f-bg-img" alt="f-bg-img" />
 
 																		</div>
@@ -114,4 +122,19 @@ class Wpannel extends React.Component {
 	}
 }
 
-export default Wpannel
+export default connect((state)=>{
+	return state
+},(dispatch)=>{
+	return {
+		toggleGallery(src){
+			console.log(src)
+			dispatch({
+				type:"toggleGallery",
+				isShowGallery:{
+					bool: !this.props.isShowGallery.bool,
+        			src
+				}
+			})
+		}
+	}
+})(Wpannel)

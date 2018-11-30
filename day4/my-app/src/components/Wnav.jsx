@@ -9,7 +9,9 @@ class Wnav extends React.Component {
     render() {
         return (
             <div className="lite-nav-sublist m-col-4" style={{
-                "top": "85px"
+                "position":"fixed",
+                "top": "84px",
+                "display":this.props.isShowNav?"block":"none"
             }}>
                 <ul className="m-auto-list">
                     <li className="m-auto-box cur"><span className="m-text-cut">热门</span></li>
