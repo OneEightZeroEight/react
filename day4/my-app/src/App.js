@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import Index from './pages/Index.jsx';
 import Detail from './pages/Detail.jsx';

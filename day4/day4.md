@@ -34,7 +34,14 @@ public 单页面应用的主页（ico，index.html）
 src 开发文件夹(组件，自定义模块，样式，模板)
 ```
 
+react和vue的脚手架都是基于webpack的
+
 # 路由
+
+|type|des|
+|-|-|
+|实现单页面应用程序single page application(SPA)（今日头条）|不刷新整个页面，永远在一个`index.html`，依靠路由切换具体的场景，首次加载大部分大部分东西，后面异步加载具体要更新的内容|
+|多页面应用程序(腾讯新闻)|页面跳转,整体刷新，资源文件重新加载|
 
 [React-Router-DOM官方文档](https://reacttraining.com/react-router/web/guides/quick-start)
 ```
@@ -131,3 +138,8 @@ Check "developer mode"
 Click "load unpacked extension", and choose shells/chrome.
 ```
 
+#  面试题
+
+- 如何配置脚手架（全局create-react-app,es-lint）
+
+- 
