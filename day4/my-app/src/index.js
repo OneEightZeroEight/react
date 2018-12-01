@@ -23,13 +23,24 @@ React.axios = axios;
 // action交换数据的动作
 const store = createStore((state = {
     title:"微博",
-    isShowNav: false
+    isShowNav: false,
+    isShowGallery: {
+        bool: false,
+        src: ""
+    },
+
 }, action) => {
     switch (action.type) {
-        case 'INCREMENT':
-            return state + 1
-        case 'DECREMENT':
-            return state - 1
+        case 'toggleNav':
+            return {
+                ...state,
+                isShowNav:action.isShowNav
+            }
+        case 'toggleGallery':
+            return {
+                ...state,
+                isShowGallery:action.isShowGallery
+            }
         default:
             return state
     }
