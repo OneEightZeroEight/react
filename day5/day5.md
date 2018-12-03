@@ -71,3 +71,29 @@ ReactDOM.render(
 ## connect
 
 把组件和`store`进行一次关联。就如果没有`connect`，这个仓库是没有任何人能访问的
+```js
+import { connect } from 'react-redux';
+// 该组件如果想跟store进行连接就在导出的时候用
+export default connect((state) => {
+    // 第一个函数把store里面的值注入到Wnav组件的`props`上面
+    // 第一个函数是获取store的值
+
+    // 和store的state产生关系
+    console.log(state)
+    return state
+}, (dispatch) => {
+    // 第二个函数是触发store的值改变
+    // 相当于vue（action，commit->mutation）
+    // 你可以在此处定义多个函数，来去触发store里面的`dispatch`,从而改变`store`里面的值
+
+    // 和store的action产生关系
+    return {
+        onIncreaseClick() {
+            dispatch("increaseAction")
+        }
+    }
+})(Wnav);
+
+// 不连接store的话
+// export default Wnav
+```
