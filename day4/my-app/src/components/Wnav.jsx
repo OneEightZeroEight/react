@@ -29,6 +29,18 @@ class Wnav extends React.Component {
             </div>
         )
     }
+    componentDidMount(){
+        React.axios.get('/api/jsons/')
+			.then((response) => {
+				console.log(response);
+				this.setState({
+					cards: response.data.data.cards
+				})
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+    }
 }
 // connet的第一个函数是获取store里面的值返回给组件     (拿)
 // 二而第二个函数是定义一个方法给自身使用，而这个方法可以出发store里面的action   （改）
